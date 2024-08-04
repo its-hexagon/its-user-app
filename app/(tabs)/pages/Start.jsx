@@ -1,18 +1,22 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet, TouchableOpacity, Image, Text } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { Logo } from "../../assets/images/logo.png";
+
+const Logo = require("../../../assets/images/logo.png");
 
 const Start = ({ navigation }) => {
-  const handlePress = () => {
-    console.log("move to login");
-    navigation.navigate("Login");
-  };
+  useEffect(() => {
+    console.log(navigation);
+    const timer = setTimeout(() => {
+      navigation.replace("Login");
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [navigation]);
 
   return (
-    <TouchableOpacity style={styles.container} onPress={handlePress}>
-      <Text>hi</Text>
+    <TouchableOpacity style={styles.container}>
       <Image source={Logo} style={styles.logo} />
       <StatusBar style="auto" />
     </TouchableOpacity>
