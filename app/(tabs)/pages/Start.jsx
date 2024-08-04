@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable react/prop-types */
 import React, { useEffect } from "react";
-import { StyleSheet, TouchableOpacity, Image, Text } from "react-native";
+import { StyleSheet, TouchableOpacity, Image } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
 const Logo = require("../../../assets/images/logo.png");
