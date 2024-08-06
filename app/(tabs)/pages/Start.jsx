@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { StyleSheet, TouchableOpacity, Image } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
-const Logo = require("../../../assets/images/logo.png");
+const Logo = require("../../../assets/image/logo.png");
 
 const Start = ({ navigation }) => {
   useEffect(() => {
