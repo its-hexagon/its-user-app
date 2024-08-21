@@ -1,16 +1,14 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-/* eslint-disable react/prop-types */
-import React, { useEffect } from "react";
-import { StyleSheet, TouchableOpacity, Image } from "react-native";
-import { StatusBar } from "expo-status-bar";
+import React, { useEffect } from 'react';
+import { StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 
-const Logo = require("../../../assets/image/logo.png");
+const Logo = require('../../../assets/image/logo.png');
 
 const Start = ({ navigation }) => {
   useEffect(() => {
     console.log(navigation);
     const timer = setTimeout(() => {
-      navigation.replace("Login");
+      navigation.replace('Login');
     }, 1000);
     return () => clearTimeout(timer);
   }, [navigation]);
@@ -26,9 +24,9 @@ const Start = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   logo: {
     width: 200,
@@ -37,7 +35,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 40,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
 });
 

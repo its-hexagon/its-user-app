@@ -1,9 +1,10 @@
-import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import Start from "./pages/Start";
-import Login from "./pages/Login";
-import Home from "./pages/Home";
-import SelectMode from "./pages/SelectMode";
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+//import { NavigationContainer } from '@react-navigation/native';
+import Start from './pages/Start';
+import Login from './pages/Login';
+import Home from './pages/Home';
+import SelectMode from './pages/SelectMode';
 
 const Stack = createStackNavigator();
 
