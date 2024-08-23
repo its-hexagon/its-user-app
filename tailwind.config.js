@@ -9,6 +9,7 @@ module.exports = {
       appleBlack: '#000000',
       wh: '#ffffff',
       blue: '#3182F7',
+      blackk: '#000000',
     },
     extend: {},
   },
