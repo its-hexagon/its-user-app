@@ -13,7 +13,7 @@ const SelectMode = ({ navigation }) => {
 
   return (
     <View className="bg-wh flex-1">
-      <View className="flex items-center pt-20">
+      <View className="flex items-center pt-24">
         <Text className="text-3xl font-bold">국제 무역사</Text>
         <Text className="text-3xl font-bold">독학으로 끝내기</Text>
       </View>
@@ -22,7 +22,10 @@ const SelectMode = ({ navigation }) => {
         <Image source={arrow} className="mt-6 mb-10" />
       </View>
       <View className="flex justify-center items-center space-y-16">
-        <TouchableOpacity className="bg-blue w-5/6 rounded-xl shadow-lg relative justify-center items-center">
+        <TouchableOpacity
+          onPress={() => navigation.navigate('CbtSubject')}
+          className="bg-blue w-5/6 rounded-xl shadow-lg relative justify-center items-center"
+        >
           <TouchableOpacity
             onPress={() => setCbtModalVisible(true)}
             className="absolute top-2 right-2"
@@ -82,10 +85,10 @@ const SelectMode = ({ navigation }) => {
               CBT 모의고사란?
             </Text>
             <View className="items-center px-4 pb-10">
-              <Text className="mt-4 text-wh text-xl">1과목부터 4과목을</Text>
-              <Text className="text-wh text-xl">세부과목으로 나누어</Text>
-              <Text className="text-wh text-xl">문제를 공부할 수 있는</Text>
-              <Text className="text-wh text-xl">학습과정입니다.</Text>
+              <Text className="mt-4 text-wh text-xl">실제 기출과 동일하게</Text>
+              <Text className="text-wh text-xl">과목별 40문항을</Text>
+              <Text className="text-wh text-xl">시간내 일렬로 풀어보는</Text>
+              <Text className="text-wh text-xl">학습 과정입니다.</Text>
             </View>
           </View>
         </TouchableOpacity>
@@ -113,13 +116,13 @@ const SelectMode = ({ navigation }) => {
               <Image source={close} className="w-6 h-6" />
             </TouchableOpacity>
             <Text className="font-bold text-center text-wh text-2xl py-4">
-              학습 모드란?
+              과목별 학습 모드란?
             </Text>
             <View className="items-center px-4 pb-10">
               <Text className="mt-4 text-wh text-xl">1과목부터 4과목을</Text>
               <Text className="text-wh text-xl">세부과목으로 나누어</Text>
               <Text className="text-wh text-xl">문제를 공부할 수 있는</Text>
-              <Text className="text-wh text-xl">학습과정입니다.</Text>
+              <Text className="text-wh text-xl">학습 과정입니다.</Text>
             </View>
           </View>
         </TouchableOpacity>
@@ -150,10 +153,13 @@ const SelectMode = ({ navigation }) => {
               오답노트란?
             </Text>
             <View className="items-center px-4 pb-10">
-              <Text className="mt-4 text-wh text-xl">1과목부터 4과목을</Text>
-              <Text className="text-wh text-xl">세부과목으로 나누어</Text>
-              <Text className="text-wh text-xl">문제를 공부할 수 있는</Text>
-              <Text className="text-wh text-xl">학습과정입니다.</Text>
+              <Text className="mt-4 text-wh text-xl">
+                모의고사나 학습과정에서
+              </Text>
+              <Text className="text-wh text-xl">
+                오답노트에 저장한 문제들을
+              </Text>
+              <Text className="text-wh text-xl">다시 풀어보는 과정입니다.</Text>
             </View>
           </View>
         </TouchableOpacity>
