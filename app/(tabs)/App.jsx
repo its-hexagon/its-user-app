@@ -5,8 +5,12 @@ import Start from './pages/Start';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import SelectMode from './pages/SelectMode';
-import SelectSubject from './pages/cbt/SelectSubject';
 import Mypage from './pages/MyPage';
+import SelectCbtSubject from './pages/cbt/SelectCbtSubject';
+import SelectCbtType from './pages/cbt/SelectCbtType';
+import CbtTestStart from './pages/cbt/CbtTestStart';
+import CbtTest from './pages/cbt/CbtTest';
+import CbtGrade from './pages/cbt/CbtGrade';
 
 const Stack = createStackNavigator();
 
@@ -20,8 +24,12 @@ const App = () => {
       <Stack.Screen name="Start" component={Start} />
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Mode" component={SelectMode} />
-      <Stack.Screen name="CbtSubject" component={SelectSubject} />
       <Stack.Screen name="Mypage" component={Mypage} />
+      <Stack.Screen name="CbtSubject" component={SelectCbtSubject} />
+      <Stack.Screen name="CbtType" component={SelectCbtType} />
+      <Stack.Screen name="CbtTestStart" component={CbtTestStart} />
+      <Stack.Screen name="CbtTest" component={CbtTest} />
+      <Stack.Screen name="CbtGrade" component={CbtGrade} />
     </Stack.Navigator>
   );
 };
