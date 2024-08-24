@@ -10,7 +10,7 @@ import {
 
 const doubleArrow = require('../../../../assets/image/doubleArrow.png');
 
-const SelectSubject = ({ navigation }) => {
+const SelectCbtSubject = ({ navigation }) => {
   return (
     <SafeAreaView className="bg-wh flex-1">
       <StatusBar style="dark" />
@@ -63,4 +63,4 @@ const SelectSubject = ({ navigation }) => {
   );
 };
 
-export default SelectSubject;
+export default SelectCbtSubject;
