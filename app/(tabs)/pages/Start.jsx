@@ -6,7 +6,6 @@ const Logo = require('../../../assets/image/logo.png');
 
 const Start = ({ navigation }) => {
   useEffect(() => {
-    console.log(navigation);
     const timer = setTimeout(() => {
       navigation.replace('Login');
     }, 1000);

@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Image, Text, View } from 'react-native';
 
 const cbtTest = require('../../../../assets/image/cbtTest.png');
 
 const CbtTestStart = ({ navigation, route }) => {
   const { subject, type } = route.params;
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigation.replace('CbtTest', { subject: subject, type: type });
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [navigation]);
 
   return (
     <View className="flex-1 bg-wh justify-center">

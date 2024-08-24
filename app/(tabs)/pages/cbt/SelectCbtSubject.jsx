@@ -28,6 +28,7 @@ const SelectCbtSubject = ({ navigation }) => {
           }
           className="border-y flex-row items-center"
         >
+          <View className="w-3 h-3 ml-3 bg-blue"></View>
           <Text className="text-2xl font-bold pt-4 pb-4 ml-4">무역 규범</Text>
           <Image source={doubleArrow} />
         </TouchableOpacity>
@@ -37,6 +38,7 @@ const SelectCbtSubject = ({ navigation }) => {
           }
           className="border-b flex-row items-center"
         >
+          <View className="w-3 h-3 ml-3 bg-blue"></View>
           <Text className="text-2xl font-bold py-4 ml-4">무역 결제</Text>
           <Image source={doubleArrow} />
         </TouchableOpacity>
@@ -46,6 +48,7 @@ const SelectCbtSubject = ({ navigation }) => {
           }
           className="border-b flex-row items-center"
         >
+          <View className="w-3 h-3 ml-3 bg-blue"></View>
           <Text className="text-2xl font-bold py-4 ml-4">무역 계약</Text>
           <Image source={doubleArrow} />
         </TouchableOpacity>
@@ -55,6 +58,7 @@ const SelectCbtSubject = ({ navigation }) => {
           }
           className="border-b flex-row items-center"
         >
+          <View className="w-3 h-3 ml-3 bg-blue"></View>
           <Text className="text-2xl font-bold py-4 ml-4">무역 영어</Text>
           <Image source={doubleArrow} />
         </TouchableOpacity>

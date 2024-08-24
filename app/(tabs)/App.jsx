@@ -9,6 +9,7 @@ import Mypage from './pages/MyPage';
 import SelectCbtSubject from './pages/cbt/SelectCbtSubject';
 import SelectCbtType from './pages/cbt/SelectCbtType';
 import CbtTestStart from './pages/cbt/CbtTestStart';
+import CbtTest from './pages/cbt/CbtTest';
 
 const Stack = createStackNavigator();
 
@@ -26,6 +27,7 @@ const App = () => {
       <Stack.Screen name="CbtSubject" component={SelectCbtSubject} />
       <Stack.Screen name="CbtType" component={SelectCbtType} />
       <Stack.Screen name="CbtTestStart" component={CbtTestStart} />
+      <Stack.Screen name="CbtTest" component={CbtTest} />
     </Stack.Navigator>
   );
 };
