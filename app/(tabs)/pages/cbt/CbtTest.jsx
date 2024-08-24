@@ -52,7 +52,15 @@ const CbtTest = ({ navigation, route }) => {
             <TouchableOpacity className="bg-blue w-28 h-12 rounded-lg justify-center items-center">
               <Text className="text-wh text-xl">이전 문제</Text>
             </TouchableOpacity>
-            <TouchableOpacity className="bg-blue w-28 h-12 rounded-lg justify-center items-center">
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate('CbtGrade', {
+                  subject: subject,
+                  type: type,
+                })
+              }
+              className="bg-blue w-28 h-12 rounded-lg justify-center items-center"
+            >
               <Text className="text-wh text-xl">다음 문제</Text>
             </TouchableOpacity>
           </View>
