@@ -36,7 +36,10 @@ const SelectMode = ({ navigation }) => {
             CBT 모의고사 풀기
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity className="bg-blue w-5/6 rounded-xl shadow-lg relative justify-center items-center">
+        <TouchableOpacity
+          onPress={() => navigation.navigate('LearningSubject')}
+          className="bg-blue w-5/6 rounded-xl shadow-lg relative justify-center items-center"
+        >
           <TouchableOpacity
             onPress={() => setPracticeModalVisible(true)}
             className="absolute top-2 right-2"
