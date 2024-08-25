@@ -8,7 +8,7 @@ const LearningStart = ({ route, navigation }) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.replace('CbtTest', { subject: subject, type: type });
+      navigation.replace('LearningTest', { subject: minorSubject });
     }, 1000);
     return () => clearTimeout(timer);
   }, [navigation]);
