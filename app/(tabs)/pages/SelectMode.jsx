@@ -50,7 +50,10 @@ const SelectMode = ({ navigation }) => {
             과목별 학습 모드
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity className="bg-blue w-5/6 rounded-xl shadow-lg relative justify-center items-center">
+        <TouchableOpacity
+          onPress={() => navigation.navigate('ReviewMajor')}
+          className="bg-blue w-5/6 rounded-xl shadow-lg relative justify-center items-center"
+        >
           <TouchableOpacity
             onPress={() => setReviewModalVisible(true)}
             className="absolute top-2 right-2"
