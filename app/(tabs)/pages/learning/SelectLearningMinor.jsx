@@ -18,7 +18,7 @@ const SelectLearningMinor = ({ navigation, route }) => {
             key={index}
             className="bg-blue rounded-lg shadow-lg w-3/4"
             onPress={() => {
-              console.log(`Selected minor: ${subject}`);
+              navigation.navigate('LearningStart', { minorSubject: subject });
             }}
           >
             <Text className="text-wh text-2xl text-center py-4">
