@@ -49,7 +49,7 @@ const CbtTest = ({ navigation, route }) => {
             </View>
           ))}
           <View className="flex-row justify-between px-6">
-            <TouchableOpacity className="bg-blue w-28 h-12 rounded-lg justify-center items-center">
+            <TouchableOpacity className="bg-blue w-28 h-12 rounded-full justify-center items-center">
               <Text className="text-wh text-xl">이전 문제</Text>
             </TouchableOpacity>
             <TouchableOpacity
@@ -59,7 +59,7 @@ const CbtTest = ({ navigation, route }) => {
                   type: type,
                 })
               }
-              className="bg-blue w-28 h-12 rounded-lg justify-center items-center"
+              className="bg-blue w-28 h-12 rounded-full justify-center items-center"
             >
               <Text className="text-wh text-xl">다음 문제</Text>
             </TouchableOpacity>
