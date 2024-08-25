@@ -2,7 +2,7 @@ import React from 'react';
 import { SafeAreaView, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const SelectLearningSubject = () => {
+const SelectLearningMajor = ({ navigation }) => {
   return (
     <SafeAreaView className="bg-wh flex-1">
       <Text className="text-3xl font-bold text-center pt-16 pb-10">
@@ -12,7 +12,15 @@ const SelectLearningSubject = () => {
         과목을 선택하세요
       </Text>
       <View className="items-center space-y-10">
-        <TouchableOpacity className="bg-blue rounded-lg shadow-lg">
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('LearningMinor', {
+              major: '무역 규범',
+              minor: ['대외무역법', '통관/관세환급', 'FTA 특례법'],
+            })
+          }
+          className="bg-blue rounded-lg shadow-lg"
+        >
           <Text className="text-wh text-2xl text-center py-4 px-12">
             무역 규범 150제
           </Text>
@@ -37,4 +45,4 @@ const SelectLearningSubject = () => {
   );
 };
 
-export default SelectLearningSubject;
+export default SelectLearningMajor;

@@ -37,7 +37,7 @@ const SelectMode = ({ navigation }) => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate('LearningSubject')}
+          onPress={() => navigation.navigate('LearningMajor')}
           className="bg-blue w-5/6 rounded-xl shadow-lg relative justify-center items-center"
         >
           <TouchableOpacity
