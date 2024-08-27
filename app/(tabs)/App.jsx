@@ -15,6 +15,9 @@ import SelectLearningMajor from './pages/learning/SelectLearningMajor';
 import SelectLearningMinor from './pages/learning/SelectLearningMinor';
 import LearningStart from './pages/learning/LearningStart';
 import LearningTest from './pages/learning/LearningTest';
+import SelectReviewMajor from './pages/review/SelectReviewMajor';
+import SelectReviewMinor from './pages/review/SelectReviewMinor';
+import SelectReviewType from './pages/review/SelectReviewType';
 
 const Stack = createStackNavigator();
 
@@ -38,6 +41,9 @@ const App = () => {
       <Stack.Screen name="LearningMinor" component={SelectLearningMinor} />
       <Stack.Screen name="LearningStart" component={LearningStart} />
       <Stack.Screen name="LearningTest" component={LearningTest} />
+      <Stack.Screen name="ReviewMajor" component={SelectReviewMajor} />
+      <Stack.Screen name="ReviewMinor" component={SelectReviewMinor} />
+      <Stack.Screen name="ReviewType" component={SelectReviewType} />
     </Stack.Navigator>
   );
 };
