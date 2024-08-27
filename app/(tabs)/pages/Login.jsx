@@ -2,49 +2,51 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  SafeAreaView,
+} from 'react-native';
 
-// const Kakao = require("../../../assets/images/kakaoLogin.png");
-// const Naver = require("../../../assets/images/naverLogin.png");
-// const Google = require("../../../assets/images/googleLogin.png");
-// const Apple = require("../../../assets/images/appleLogin.png");
+const Kakao = require('../../../assets/image/kakaoLogin.png');
+const KakaoLogo = require('../../../assets/image/kakaoLogo.png');
+const Naver = require('../../../assets/image/naverLogin.png');
+const Google = require('../../../assets/image/googleLogin.png');
+const GoogleLogo = require('../../../assets/image/googleLogo.png');
+const Apple = require('../../../assets/image/appleLogin.png');
+
+const kakoBtn = require('../../../assets/image/kakao.png');
+const naverBtn = require('../../../assets/image/naver.png');
+const googleBtn = require('../../../assets/image/google.png');
+const appleBtn = require('../../../assets/image/apple.png');
 
 const Login = ({ navigation }) => {
   return (
-    <View className="flex-1 bg-wh pt-10 pl-10">
+    <SafeAreaView className="flex-1 bg-wh pt-10">
       <StatusBar style="dark" />
-      <View className="pt-20">
+      <View className="pt-20 px-10 flex-1">
         <Text className="text-3xl">간편 로그인 후</Text>
         <Text className="text-3xl">이용이</Text>
         <Text className="text-3xl">가능합니다</Text>
       </View>
-      <View className="flex space-y-3">
-        <TouchableOpacity
-          className="bg-kakoYellow w-11/12 items-center py-3"
-          onPress={() => navigation.navigate('Home')}
-        >
-          <Text className="text-xl">카카오 로그인</Text>
+      <View className="flex space-y-3 items-center pb-10">
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <Image source={kakoBtn} />
         </TouchableOpacity>
-        <TouchableOpacity
-          className="bg-naverGreen w-11/12 items-center py-3"
-          onPress={() => navigation.navigate('Home')}
-        >
-          <Text className="text-xl">네이버 로그인</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <Image source={naverBtn} />
         </TouchableOpacity>
-        <TouchableOpacity
-          className="bg-googleGray w-11/12 items-center py-3"
-          onPress={() => navigation.navigate('Home')}
-        >
-          <Text className="text-xl">구글 로그인</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <Image source={googleBtn} />
         </TouchableOpacity>
-        <TouchableOpacity
-          className="bg-appleBlack w-11/12 items-center py-3"
-          onPress={() => navigation.navigate('Home')}
-        >
-          <Text className="text-xl text-wh">애플 로그인</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <Image source={appleBtn} />
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

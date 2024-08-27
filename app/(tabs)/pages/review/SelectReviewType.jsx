@@ -19,9 +19,10 @@ const SelectReviewType = ({ navigation, route }) => {
         {minorSubject} 오답노트
       </Text>
       <Text className="text-center text-gray text-lg pb-24">
-        세부과목을 선택해주세요
+        오답노트 유형을 선택해주세요
       </Text>
       <View className="flex-row justify-evenly">
+        {/* todo: naviagation & route */}
         <TouchableOpacity className="bg-blue rounded-xl py-4 shadow-lg">
           <Image className="w-40 h-40" source={cbtReview} />
           <Text className="text-xl font-bold text-wh text-center">
