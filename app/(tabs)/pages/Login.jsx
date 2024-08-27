@@ -11,17 +11,17 @@ import {
   SafeAreaView,
 } from 'react-native';
 
-const Kakao = require('../../../assets/image/kakaoLogin.png');
-const KakaoLogo = require('../../../assets/image/kakaoLogo.png');
-const Naver = require('../../../assets/image/naverLogin.png');
-const Google = require('../../../assets/image/googleLogin.png');
-const GoogleLogo = require('../../../assets/image/googleLogo.png');
-const Apple = require('../../../assets/image/appleLogin.png');
+const Kakao = require('../../../assets/image/login/kakaoLogin.png');
+const KakaoLogo = require('../../../assets/image/login/kakaoLogo.png');
+const Naver = require('../../../assets/image/login/naverLogin.png');
+const Google = require('../../../assets/image/login/googleLogin.png');
+const GoogleLogo = require('../../../assets/image/login/googleLogo.png');
+const Apple = require('../../../assets/image/login/appleLogin.png');
 
-const kakoBtn = require('../../../assets/image/kakao.png');
-const naverBtn = require('../../../assets/image/naver.png');
-const googleBtn = require('../../../assets/image/google.png');
-const appleBtn = require('../../../assets/image/apple.png');
+const kakoBtn = require('../../../assets/image/login/kakao.png');
+const naverBtn = require('../../../assets/image/login/naver.png');
+const googleBtn = require('../../../assets/image/login/google.png');
+const appleBtn = require('../../../assets/image/login/apple.png');
 
 const Login = ({ navigation }) => {
   return (

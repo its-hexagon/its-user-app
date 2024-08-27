@@ -1,8 +1,14 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { TouchableOpacity, View, Text, StatusBar } from 'react-native';
+import { TouchableOpacity, View, Text, StatusBar, Linking } from 'react-native';
 
 const Home = ({ navigation }) => {
+  const handlePress = () => {
+    Linking.openURL(
+      'https://m.blog.naver.com/PostList.naver?blogId=safeguardcustoms&tab=1',
+    );
+  };
+
   return (
     <View className="flex-1 p-10 bg-wh">
       <StatusBar style="dark" />
@@ -39,7 +45,7 @@ const Home = ({ navigation }) => {
         </TouchableOpacity>
         <TouchableOpacity
           className="bg-naverGreen flex justify-center items-center w-full py-4 rounded-xl mt-4"
-          onPress={() => navigation.navigate('Mode')}
+          onPress={handlePress}
         >
           <Text className="text-xl text-wh font-bold">블로그 바로가기</Text>
         </TouchableOpacity>
