@@ -6,7 +6,10 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Alert,
 } from 'react-native';
+import ShowExitAlert from '../../../../components/exit/ShowExitAlert';
+import ShowSaveAlert from '../../../../components/save/ShowSaveAlert';
 
 const record = require('../../../../assets/image/record.png');
 const star = require('../../../../assets/image/star.png');
@@ -25,6 +28,14 @@ const sampleData = {
 const CbtTest = ({ navigation, route }) => {
   const { subject, type } = route.params;
 
+  const handleExit = () => {
+    navigation.navigate('Home');
+  };
+
+  const handleSave = () => {
+    console.log('save');
+  };
+
   return (
     <SafeAreaView className="flex-1 bg-wh">
       <View>
@@ -34,8 +45,12 @@ const CbtTest = ({ navigation, route }) => {
             <Text className="text-wh text-xl">time</Text>
           </View>
           <View className="flex-row space-x-2">
-            <Image source={star} />
-            <Image source={exit} />
+            <TouchableOpacity onPress={() => ShowSaveAlert(handleSave)}>
+              <Image source={star} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => ShowExitAlert(handleExit)}>
+              <Image source={exit} />
+            </TouchableOpacity>
           </View>
         </View>
         <Text className="px-6 text-xl text-blue font-bold">
@@ -43,28 +58,30 @@ const CbtTest = ({ navigation, route }) => {
         </Text>
         <ScrollView>
           <Text className="p-6 text-2xl">{sampleData.question}</Text>
+        </ScrollView>
+        <ScrollView>
           {sampleData.options.map((option, index) => (
             <View key={index} className="px-6 py-4">
               <Text className="text-lg">{option}</Text>
             </View>
           ))}
-          <View className="flex-row justify-between px-6">
-            <TouchableOpacity className="bg-blue w-28 h-12 rounded-full justify-center items-center">
-              <Text className="text-wh text-xl">이전 문제</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate('CbtGrade', {
-                  subject: subject,
-                  type: type,
-                })
-              }
-              className="bg-blue w-28 h-12 rounded-full justify-center items-center"
-            >
-              <Text className="text-wh text-xl">다음 문제</Text>
-            </TouchableOpacity>
-          </View>
         </ScrollView>
+        <View className="flex-row justify-between px-6">
+          <TouchableOpacity className="bg-blue w-28 h-12 rounded-full justify-center items-center">
+            <Text className="text-wh text-xl">이전 문제</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('CbtGrade', {
+                subject: subject,
+                type: type,
+              })
+            }
+            className="bg-blue w-28 h-12 rounded-full justify-center items-center"
+          >
+            <Text className="text-wh text-xl">다음 문제</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );
