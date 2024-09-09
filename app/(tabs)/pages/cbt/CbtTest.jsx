@@ -6,7 +6,10 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Alert,
 } from 'react-native';
+import ShowExitAlert from '../../../../components/exit/ShowExitAlert';
+import ShowSaveAlert from '../../../../components/save/ShowSaveAlert';
 
 const record = require('../../../../assets/image/record.png');
 const star = require('../../../../assets/image/star.png');
@@ -25,6 +28,14 @@ const sampleData = {
 const CbtTest = ({ navigation, route }) => {
   const { subject, type } = route.params;
 
+  const handleExit = () => {
+    navigation.navigate('Home');
+  };
+
+  const handleSave = () => {
+    console.log('save');
+  };
+
   return (
     <SafeAreaView className="flex-1 bg-wh">
       <View>
@@ -34,8 +45,12 @@ const CbtTest = ({ navigation, route }) => {
             <Text className="text-wh text-xl">time</Text>
           </View>
           <View className="flex-row space-x-2">
-            <Image source={star} />
-            <Image source={exit} />
+            <TouchableOpacity onPress={() => ShowSaveAlert(handleSave)}>
+              <Image source={star} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => ShowExitAlert(handleExit)}>
+              <Image source={exit} />
+            </TouchableOpacity>
           </View>
         </View>
         <Text className="px-6 text-xl text-blue font-bold">
