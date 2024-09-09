@@ -58,28 +58,30 @@ const CbtTest = ({ navigation, route }) => {
         </Text>
         <ScrollView>
           <Text className="p-6 text-2xl">{sampleData.question}</Text>
+        </ScrollView>
+        <ScrollView>
           {sampleData.options.map((option, index) => (
             <View key={index} className="px-6 py-4">
               <Text className="text-lg">{option}</Text>
             </View>
           ))}
-          <View className="flex-row justify-between px-6">
-            <TouchableOpacity className="bg-blue w-28 h-12 rounded-full justify-center items-center">
-              <Text className="text-wh text-xl">이전 문제</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate('CbtGrade', {
-                  subject: subject,
-                  type: type,
-                })
-              }
-              className="bg-blue w-28 h-12 rounded-full justify-center items-center"
-            >
-              <Text className="text-wh text-xl">다음 문제</Text>
-            </TouchableOpacity>
-          </View>
         </ScrollView>
+        <View className="flex-row justify-between px-6">
+          <TouchableOpacity className="bg-blue w-28 h-12 rounded-full justify-center items-center">
+            <Text className="text-wh text-xl">이전 문제</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('CbtGrade', {
+                subject: subject,
+                type: type,
+              })
+            }
+            className="bg-blue w-28 h-12 rounded-full justify-center items-center"
+          >
+            <Text className="text-wh text-xl">다음 문제</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );
