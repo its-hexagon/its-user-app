@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Image,
   SafeAreaView,
@@ -6,17 +6,23 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Alert,
+  Dimensions,
 } from 'react-native';
 import ShowExitAlert from '../../../../components/exit/ShowExitAlert';
-import ShowSaveAlert from '../../../../components/save/ShowSaveAlert';
+import ShowSaveAlert from '../../../../components/save/ShowSaveAlert'; // 수정된 ShowSaveAlert 가져오기
+
+const { width, height } = Dimensions.get('window');
 
 const record = require('../../../../assets/image/record.png');
-const star = require('../../../../assets/image/star.png');
+const unfilled_star = require('../../../../assets/image/unfilled_star.png');
+const filled_star = require('../../../../assets/image/filled_star.png');
 const exit = require('../../../../assets/image/exit.png');
+const explanation_img = require('../../../../assets/image/question/55-18.png');
 
 const sampleData = {
-  question: '1. 우리나라 대외무역법의 규정에 관한 설명으로 잘못된 것은?',
+  question:
+    '18. (주)KITA는 베트남의 A업체로부터 화장품을 개당 USD 100(CIF 가격)에 1,000개를 수입하였다. 다음 조건에서 관세법령에 규정된 내용으로 잘못된 것은? (다른 고려사항은 없다)',
+  explanation: explanation_img,
   options: [
     '①  우리나라에서 이행되는 수출입 등 대외무역행위는 기본적으로 대외무역법을 적용한다.',
     '②  자유롭고 공정한 무역 원칙에 기반한 물품의 수출입은 어떤 경우에도 제한할 수 없다.',
@@ -27,13 +33,18 @@ const sampleData = {
 
 const CbtTest = ({ navigation, route }) => {
   const { subject, type } = route.params;
+  const [isSaved, setIsSaved] = useState(false); // 저장 상태 관리
 
   const handleExit = () => {
     navigation.navigate('Home');
   };
 
   const handleSave = () => {
-    console.log('save');
+    setIsSaved(true); // 저장 상태로 변경
+  };
+
+  const handleUnsave = () => {
+    setIsSaved(false); // 저장 취소 상태로 변경
   };
 
   return (
@@ -44,9 +55,14 @@ const CbtTest = ({ navigation, route }) => {
             <Image source={record} className="w-6 h-6 mr-2" />
             <Text className="text-wh text-xl">time</Text>
           </View>
-          <View className="flex-row space-x-2">
-            <TouchableOpacity onPress={() => ShowSaveAlert(handleSave)}>
-              <Image source={star} />
+          <View className="flex-row items-center space-x-2">
+            <TouchableOpacity
+              onPress={() => ShowSaveAlert(isSaved, handleSave, handleUnsave)}
+            >
+              <Image
+                className="w-12 h-12"
+                source={isSaved ? filled_star : unfilled_star} // 저장 상태에 따라 이미지 변경
+              />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => ShowExitAlert(handleExit)}>
               <Image source={exit} />
@@ -56,32 +72,23 @@ const CbtTest = ({ navigation, route }) => {
         <Text className="px-6 text-xl text-blue font-bold">
           {subject} {type}
         </Text>
-        <ScrollView>
-          <Text className="p-6 text-2xl">{sampleData.question}</Text>
-        </ScrollView>
-        <ScrollView>
+        <View>
+          <Text className="p-6 text-xl">{sampleData.question}</Text>
+        </View>
+        <ScrollView className="flex-grow">
+          <View style={{ height: height * 0.4 }}>
+            <Image
+              source={sampleData.explanation}
+              style={{ width: '100%', height: '100%' }}
+              resizeMode="contain"
+            />
+          </View>
           {sampleData.options.map((option, index) => (
             <View key={index} className="px-6 py-4">
               <Text className="text-lg">{option}</Text>
             </View>
           ))}
         </ScrollView>
-        <View className="flex-row justify-between px-6">
-          <TouchableOpacity className="bg-blue w-28 h-12 rounded-full justify-center items-center">
-            <Text className="text-wh text-xl">이전 문제</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('CbtGrade', {
-                subject: subject,
-                type: type,
-              })
-            }
-            className="bg-blue w-28 h-12 rounded-full justify-center items-center"
-          >
-            <Text className="text-wh text-xl">다음 문제</Text>
-          </TouchableOpacity>
-        </View>
       </View>
     </SafeAreaView>
   );

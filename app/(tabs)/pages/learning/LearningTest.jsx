@@ -8,8 +8,10 @@ import {
   TouchableOpacity,
   Modal, // 기본 Modal 컴포넌트 사용
 } from 'react-native';
+import ShowExitAlert from '@/components/exit/ShowExitAlert';
+import ShowSaveAlert from '@/components/save/ShowSaveAlert';
 
-const star = require('../../../../assets/image/star.png');
+const saveBtn = require('../../../../assets/image/saveBtn.png');
 const exit = require('../../../../assets/image/exit.png');
 const checkMarkRed = require('../../../../assets/image/checkMarkRed.png');
 const checkMarkGreen = require('../../../../assets/image/checkMarkGreen.png');
@@ -32,6 +34,14 @@ const LearningTest = ({ route }) => {
   const { subject } = route.params;
   const [isModalVisible, setModalVisible] = useState(false);
 
+  const handleExit = () => {
+    navigation.navigate('Home');
+  };
+
+  const handleSave = () => {
+    console.log('save');
+  };
+
   const handleNextQuestion = () => {
     setModalVisible(true);
   };
@@ -43,9 +53,13 @@ const LearningTest = ({ route }) => {
           <View className="bg-blue  rounded-lg flex-row justify-evenly items-center">
             <Text className="text-wh text-base py-1 px-2">Part. {subject}</Text>
           </View>
-          <View className="flex-row space-x-2">
-            <Image source={star} />
-            <Image source={exit} />
+          <View className="flex-row items-center space-x-2">
+            <TouchableOpacity onPress={() => ShowSaveAlert(handleSave)}>
+              <Image className="w-12 h-12" source={saveBtn} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => ShowExitAlert(handleExit)}>
+              <Image source={exit} />
+            </TouchableOpacity>
           </View>
         </View>
         <Text className="px-6 text-xl text-blue font-bold">
