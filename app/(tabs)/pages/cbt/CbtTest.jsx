@@ -22,7 +22,7 @@ const explanation_img = require('../../../../assets/image/question/55-18.png');
 const sampleData = {
   question:
     '18. (주)KITA는 베트남의 A업체로부터 화장품을 개당 USD 100(CIF 가격)에 1,000개를 수입하였다. 다음 조건에서 관세법령에 규정된 내용으로 잘못된 것은? (다른 고려사항은 없다)',
-  explanation: explanation_img,
+  explanation: 'https://i.ibb.co/dcRCgY7/55-2.png',
   options: [
     '①  우리나라에서 이행되는 수출입 등 대외무역행위는 기본적으로 대외무역법을 적용한다.',
     '②  자유롭고 공정한 무역 원칙에 기반한 물품의 수출입은 어떤 경우에도 제한할 수 없다.',
@@ -78,7 +78,7 @@ const CbtTest = ({ navigation, route }) => {
         <ScrollView className="flex-grow">
           <View style={{ height: height * 0.4 }}>
             <Image
-              source={sampleData.explanation}
+              source={{ uri: sampleData.explanation }}
               style={{ width: '100%', height: '100%' }}
               resizeMode="contain"
             />
