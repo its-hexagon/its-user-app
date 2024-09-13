@@ -8,13 +8,15 @@ import {
   TouchableOpacity,
   Modal, // 기본 Modal 컴포넌트 사용
 } from 'react-native';
-import ShowExitAlert from '@/components/exit/ShowExitAlert';
-import ShowSaveAlert from '@/components/save/ShowSaveAlert';
+import ShowExitAlert from '../../../../components/exit/ShowExitAlert';
+import ShowSaveAlert from '../../../../components/save/ShowSaveAlert';
 
 const saveBtn = require('../../../../assets/image/saveBtn.png');
 const exit = require('../../../../assets/image/exit.png');
 const checkMarkRed = require('../../../../assets/image/checkMarkRed.png');
 const checkMarkGreen = require('../../../../assets/image/checkMarkGreen.png');
+const unfilled_star = require('../../../../assets/image/unfilled_star.png');
+const filled_star = require('../../../../assets/image/filled_star.png');
 
 const sampleData = {
   question: '1. 우리나라 대외무역법의 규정에 관한 설명으로 잘못된 것은?',
@@ -33,13 +35,18 @@ const sampleData = {
 const LearningTest = ({ route }) => {
   const { subject } = route.params;
   const [isModalVisible, setModalVisible] = useState(false);
+  const [isSaved, setIsSaved] = useState(false); // 저장 상태 관리
 
   const handleExit = () => {
     navigation.navigate('Home');
   };
 
   const handleSave = () => {
-    console.log('save');
+    setIsSaved(true);
+  };
+
+  const handleUnsave = () => {
+    setIsSaved(false); // 저장 취소 상태로 변경
   };
 
   const handleNextQuestion = () => {
@@ -54,8 +61,13 @@ const LearningTest = ({ route }) => {
             <Text className="text-wh text-base py-1 px-2">Part. {subject}</Text>
           </View>
           <View className="flex-row items-center space-x-2">
-            <TouchableOpacity onPress={() => ShowSaveAlert(handleSave)}>
-              <Image className="w-12 h-12" source={saveBtn} />
+            <TouchableOpacity
+              onPress={() => ShowSaveAlert(isSaved, handleSave, handleUnsave)}
+            >
+              <Image
+                className="w-12 h-12"
+                source={isSaved ? filled_star : unfilled_star} // 저장 상태에 따라 이미지 변경
+              />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => ShowExitAlert(handleExit)}>
               <Image source={exit} />
