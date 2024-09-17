@@ -9,7 +9,7 @@ import {
   Dimensions,
 } from 'react-native';
 import ShowExitAlert from '../../../../components/exit/ShowExitAlert';
-import ShowSaveAlert from '../../../../components/save/ShowSaveAlert'; // 수정된 ShowSaveAlert 가져오기
+import ShowSaveAlert from '../../../../components/save/ShowSaveAlert';
 
 const { width, height } = Dimensions.get('window');
 

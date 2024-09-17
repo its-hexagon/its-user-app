@@ -1,6 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 //import { NavigationContainer } from '@react-navigation/native';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Start from './pages/Start';
 import Login from './pages/Login';
 import Home from './pages/Home';
@@ -20,31 +21,34 @@ import SelectReviewMinor from './pages/review/SelectReviewMinor';
 import SelectReviewType from './pages/review/SelectReviewType';
 
 const Stack = createStackNavigator();
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <Stack.Navigator
-      initialRouteName="Start"
-      screenOptions={{ headerShown: false }}
-    >
-      <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Start" component={Start} />
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Mode" component={SelectMode} />
-      <Stack.Screen name="Mypage" component={Mypage} />
-      <Stack.Screen name="CbtSubject" component={SelectCbtSubject} />
-      <Stack.Screen name="CbtType" component={SelectCbtType} />
-      <Stack.Screen name="CbtTestStart" component={CbtTestStart} />
-      <Stack.Screen name="CbtTest" component={CbtTest} />
-      <Stack.Screen name="CbtGrade" component={CbtGrade} />
-      <Stack.Screen name="LearningMajor" component={SelectLearningMajor} />
-      <Stack.Screen name="LearningMinor" component={SelectLearningMinor} />
-      <Stack.Screen name="LearningStart" component={LearningStart} />
-      <Stack.Screen name="LearningTest" component={LearningTest} />
-      <Stack.Screen name="ReviewMajor" component={SelectReviewMajor} />
-      <Stack.Screen name="ReviewMinor" component={SelectReviewMinor} />
-      <Stack.Screen name="ReviewType" component={SelectReviewType} />
-    </Stack.Navigator>
+    <QueryClientProvider client={queryClient}>
+      <Stack.Navigator
+        initialRouteName="Start"
+        screenOptions={{ headerShown: false }}
+      >
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Start" component={Start} />
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Mode" component={SelectMode} />
+        <Stack.Screen name="Mypage" component={Mypage} />
+        <Stack.Screen name="CbtSubject" component={SelectCbtSubject} />
+        <Stack.Screen name="CbtType" component={SelectCbtType} />
+        <Stack.Screen name="CbtTestStart" component={CbtTestStart} />
+        <Stack.Screen name="CbtTest" component={CbtTest} />
+        <Stack.Screen name="CbtGrade" component={CbtGrade} />
+        <Stack.Screen name="LearningMajor" component={SelectLearningMajor} />
+        <Stack.Screen name="LearningMinor" component={SelectLearningMinor} />
+        <Stack.Screen name="LearningStart" component={LearningStart} />
+        <Stack.Screen name="LearningTest" component={LearningTest} />
+        <Stack.Screen name="ReviewMajor" component={SelectReviewMajor} />
+        <Stack.Screen name="ReviewMinor" component={SelectReviewMinor} />
+        <Stack.Screen name="ReviewType" component={SelectReviewType} />
+      </Stack.Navigator>
+    </QueryClientProvider>
   );
 };
 export default App;
