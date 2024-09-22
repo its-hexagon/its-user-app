@@ -1,8 +1,8 @@
 import * as AuthSession from 'expo-auth-session';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const kakaoClientId = 'a9f814539b8888f936555111dfd86df7a';  // 카카오 개발자 콘솔에서 발급받은 클라이언트 ID
-const redirectUri = AuthSession.makeRedirectUri({ useProxy: true });
+const kakaoClientId = 'a9f814539b8888f936555111dfd86df7a';
+const redirectUri = 'https://its-edu.site/login/oauth2/code/kakao';
 
 const discovery = {
   authorizationEndpoint: 'https://kauth.kakao.com/oauth/authorize',
@@ -13,6 +13,7 @@ export const KakaoLogin = async (navigation) => {
   try {
     // 카카오 로그인 페이지로 이동
     const authUrl = `${discovery.authorizationEndpoint}?client_id=${kakaoClientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code`;
+    console.log(authUrl);
     const result = await AuthSession.startAsync({ authUrl });
 
     if (result.type === 'success') {
