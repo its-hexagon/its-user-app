@@ -1,64 +1,37 @@
-import * as AuthSession from 'expo-auth-session';
+import { startAsync, makeRedirectUri } from 'expo-auth-session';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const kakaoClientId = 'a9f814539b8888f936555111dfd86df7a';
-const redirectUri = 'https://its-edu.site/login/oauth2/code/kakao';
-
-const discovery = {
-  authorizationEndpoint: 'https://kauth.kakao.com/oauth/authorize',
-  tokenEndpoint: 'https://kauth.kakao.com/oauth/token',
-};
+import { Linking, Alert } from 'react-native';
 
 export const KakaoLogin = async (navigation) => {
   try {
-    // 카카오 로그인 페이지로 이동
-    const authUrl = `${discovery.authorizationEndpoint}?client_id=${kakaoClientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code`;
-    console.log(authUrl);
-    const result = await AuthSession.startAsync({ authUrl });
+    const kakaoLoginUrl = 'https://its-edu.site/oauth2/authorization/kakao';
+    
+    const redirectUri = makeRedirectUri({ useProxy: true });
+    const authUrl = `https://its-edu.site/oauth2/authorization/kakao?redirect_uri=${redirectUri}`;
+    
+    // OAuth 로그인 요청 시작
+    const result = await startAsync({ kakaoLoginUrl });
+    
+    // response 데이터를 콘솔에 출력 (서버에서 response를 받은 후 로직)
+    // console.log('Kakao Login Response:', result); 
+    // todo
 
-    if (result.type === 'success') {
-      // 인증 코드로 액세스 토큰 요청
-      const tokenResponse = await fetch(discovery.tokenEndpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: `grant_type=authorization_code&client_id=${kakaoClientId}&redirect_uri=${encodeURIComponent(redirectUri)}&code=${result.params.code}`,
-      });
+    // 예시로 response에서 토큰 값을 추출 후 AsyncStorage에 저장
+    const accessToken = result['Set-Cookie'].split('accessToken=')[1].split(';')[0];
+    const refreshToken = result['Set-Cookie'].split('refreshToken=')[1].split(';')[0];
 
-      // Set-Cookie 헤더에서 accessToken 및 refreshToken 추출
-      const cookieHeader = tokenResponse.headers.get('Set-Cookie');
-      if (cookieHeader) {
-        const cookies = cookieHeader.split(';').map(cookie => cookie.trim());
-        let accessToken = null;
-        let refreshToken = null;
+    // 토큰을 AsyncStorage에 저장
+    await AsyncStorage.setItem('accessToken', accessToken);
+    await AsyncStorage.setItem('refreshToken', refreshToken);
 
-        cookies.forEach(cookie => {
-          if (cookie.startsWith('accessToken=')) {
-            accessToken = cookie.replace('accessToken=', '');
-          } else if (cookie.startsWith('refreshToken=')) {
-            refreshToken = cookie.replace('refreshToken=', '');
-          }
-        });
+    console.log('Access Token:', accessToken);
+    console.log('Refresh Token:', refreshToken);
 
-        // accessToken과 refreshToken이 존재하는지 확인
-        if (accessToken && refreshToken) {
-          // 토큰을 AsyncStorage에 저장
-          const authState = { accessToken, refreshToken };
-          await AsyncStorage.setItem('authState', JSON.stringify(authState));
-
-          console.log('로그인 성공 - accessToken:', accessToken);
-          navigation.navigate('Home'); // 로그인 성공 후 Home 화면으로 이동
-        } else {
-          console.error('토큰 추출 실패');
-        }
-      } else {
-        console.error('Set-Cookie 헤더가 없습니다.');
-      }
-    } else {
-      console.log('카카오 로그인 실패:', result);
-    }
+    // 로그인 성공 후 홈 화면으로 이동
+    navigation.navigate('Home');
   } catch (error) {
     console.error('카카오 로그인 중 에러 발생:', error);
+    Alert.alert('로그인 실패', '카카오 로그인에 실패했습니다. 다시 시도해주세요.');
   }
 };

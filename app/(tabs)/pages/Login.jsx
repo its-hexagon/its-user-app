@@ -81,25 +81,3 @@ const styles = StyleSheet.create({
 });
 
 export default Login;
-
-{
-  /* <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-        <Image source={Kakao} style={styles.kakao} />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-        <Image source={Naver} style={styles.naver} />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-        <Image source={Google} style={styles.google} />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-        <Image source={Apple} style={styles.apple} />
-      </TouchableOpacity> */
-}
-
-// const Kakao = require('../../../assets/image/login/kakaoLogin.png');
-// const KakaoLogo = require('../../../assets/image/login/kakaoLogo.png');
-// const Naver = require('../../../assets/image/login/naverLogin.png');
-// const Google = require('../../../assets/image/login/googleLogin.png');
-// const GoogleLogo = require('../../../assets/image/login/googleLogo.png');
-// const Apple = require('../../../assets/image/login/appleLogin.png');
