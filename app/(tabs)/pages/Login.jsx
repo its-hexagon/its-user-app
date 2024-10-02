@@ -10,7 +10,6 @@ import {
   Image,
   SafeAreaView,
 } from 'react-native';
-import { KakaoLogin } from '../../../api/oauth2/KakaoLogin';
 
 const kakoBtn = require('../../../assets/image/login/kakao.png');
 const naverBtn = require('../../../assets/image/login/naver.png');
@@ -27,13 +26,13 @@ const Login = ({ navigation }) => {
         <Text className="text-3xl">가능합니다</Text>
       </View>
       <View className="flex space-y-3 items-center pb-10">
-        <TouchableOpacity onPress={() => KakaoLogin(navigation)}>
+        <TouchableOpacity onPress={() => navigation.navigate('KakaoLogin')}>
           <Image source={kakoBtn} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+        <TouchableOpacity onPress={() => navigation.navigate('NaverLogin')}>
           <Image source={naverBtn} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+        <TouchableOpacity onPress={() => navigation.navigate('GoogleLogin')}>
           <Image source={googleBtn} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Home')}>

@@ -19,6 +19,9 @@ import LearningTest from './pages/learning/LearningTest';
 import SelectReviewMajor from './pages/review/SelectReviewMajor';
 import SelectReviewMinor from './pages/review/SelectReviewMinor';
 import SelectReviewType from './pages/review/SelectReviewType';
+import KakaoLogin from '../../api/oauth2/KakaoLogin';
+import NaverLogin from '../../api/oauth2/NaverLogin';
+import GoogleLogin from '../../api/oauth2/GoogleLogin';
 
 const Stack = createStackNavigator();
 const queryClient = new QueryClient();
@@ -47,6 +50,9 @@ const App = () => {
         <Stack.Screen name="ReviewMajor" component={SelectReviewMajor} />
         <Stack.Screen name="ReviewMinor" component={SelectReviewMinor} />
         <Stack.Screen name="ReviewType" component={SelectReviewType} />
+        <Stack.Screen name="KakaoLogin" component={KakaoLogin} />
+        <Stack.Screen name="NaverLogin" component={NaverLogin} />
+        <Stack.Screen name="GoogleLogin" component={GoogleLogin} />
       </Stack.Navigator>
     </QueryClientProvider>
   );
