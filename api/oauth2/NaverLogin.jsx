@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 const NaverLogin = ({ navigation }) => {
-  console.log('kakao');
+  console.log('naver');
   return (
     <SafeAreaView className="flex-1">
       <WebView

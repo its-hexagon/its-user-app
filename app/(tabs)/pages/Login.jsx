@@ -9,12 +9,17 @@ import {
   TouchableOpacity,
   Image,
   SafeAreaView,
+  Linking,
 } from 'react-native';
 
 const kakoBtn = require('../../../assets/image/login/kakao.png');
 const naverBtn = require('../../../assets/image/login/naver.png');
 const googleBtn = require('../../../assets/image/login/google.png');
 const appleBtn = require('../../../assets/image/login/apple.png');
+
+const handleKakao = () => {
+  Linking.openURL('https://its-edu.site/oauth2/authorization/kakao');
+};
 
 const Login = ({ navigation }) => {
   return (
@@ -26,7 +31,7 @@ const Login = ({ navigation }) => {
         <Text className="text-3xl">가능합니다</Text>
       </View>
       <View className="flex space-y-3 items-center pb-10">
-        <TouchableOpacity onPress={() => navigation.navigate('KakaoLogin')}>
+        <TouchableOpacity onPress={handleKakao}>
           <Image source={kakoBtn} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('NaverLogin')}>
