@@ -22,6 +22,7 @@ import SelectReviewType from './pages/review/SelectReviewType';
 import KakaoLogin from '../../api/oauth2/KakaoLogin';
 import NaverLogin from '../../api/oauth2/NaverLogin';
 import GoogleLogin from '../../api/oauth2/GoogleLogin';
+import LoginWebView from '../../components/login/LoginWebView';
 
 const Stack = createStackNavigator();
 const queryClient = new QueryClient();
@@ -53,6 +54,7 @@ const App = () => {
         <Stack.Screen name="KakaoLogin" component={KakaoLogin} />
         <Stack.Screen name="NaverLogin" component={NaverLogin} />
         <Stack.Screen name="GoogleLogin" component={GoogleLogin} />
+        <Stack.Screen name="LoginWebView" component={LoginWebView} />
       </Stack.Navigator>
     </QueryClientProvider>
   );

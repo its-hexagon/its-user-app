@@ -9,19 +9,20 @@ import {
   TouchableOpacity,
   Image,
   SafeAreaView,
-  Linking,
 } from 'react-native';
 
+// 이미지 리소스 가져오기
 const kakoBtn = require('../../../assets/image/login/kakao.png');
 const naverBtn = require('../../../assets/image/login/naver.png');
 const googleBtn = require('../../../assets/image/login/google.png');
 const appleBtn = require('../../../assets/image/login/apple.png');
 
-const handleKakao = () => {
-  Linking.openURL('https://its-edu.site/oauth2/authorization/kakao');
-};
-
 const Login = ({ navigation }) => {
+  // 로그인 핸들러 함수 정의
+  const handleLogin = (provider) => {
+    navigation.navigate('LoginWebView', { provider }); // LoginWebView로 이동하면서 provider 전달
+  };
+
   return (
     <SafeAreaView className="flex-1 bg-wh pt-10">
       <StatusBar style="dark" />
@@ -31,13 +32,14 @@ const Login = ({ navigation }) => {
         <Text className="text-3xl">가능합니다</Text>
       </View>
       <View className="flex space-y-3 items-center pb-10">
-        <TouchableOpacity onPress={handleKakao}>
+        {/* 각 버튼에 handleLogin 함수 연결 */}
+        <TouchableOpacity onPress={() => handleLogin('kakao')}>
           <Image source={kakoBtn} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('NaverLogin')}>
+        <TouchableOpacity onPress={() => handleLogin('naver')}>
           <Image source={naverBtn} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('GoogleLogin')}>
+        <TouchableOpacity onPress={() => handleLogin('google')}>
           <Image source={googleBtn} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Home')}>
@@ -47,41 +49,5 @@ const Login = ({ navigation }) => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  kakao: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 300,
-    height: 50,
-  },
-  naver: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 300,
-    height: 50,
-  },
-  google: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 300,
-    height: 50,
-  },
-  apple: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 300,
-    height: 50,
-  },
-
-  kakaoText: {
-    fontSize: 20,
-    color: '#000',
-  },
-});
 
 export default Login;
